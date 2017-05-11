@@ -1,7 +1,9 @@
 <?php
-    require_once './nbproject/private/config.php';
+    require_once './config.php';
+    require_once './db_conn.php';
 
     session_start();
+    var_dump($_SESSION);
 
     require_once './header.php';
     
