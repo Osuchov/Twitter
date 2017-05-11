@@ -1,20 +1,11 @@
 <?php
-require_once './config.php';
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$conn = new mysqli (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 if ($conn->connect_error) {
-    die('Połączenie nieudane, Błąd: '.$conn->connect_error.'<br>');
+    die('<p style="font-size: 13">Failed to connect with database.<br>'
+            . 'Error: '.$conn->connect_error.'</p><br>');
 }
 else {
-    echo 'Połączenie udane.<br>';
+    echo '<p style="font-size: 7">Connected.</p><br>';
 }
-
-//$sql = 'Insert INTO Payments (type, date) VALUES ("Karta płatnicza", "2017-04-23")';
-//if ($res = $conn->query($sql)) {
-//    echo 'Dodatnie rekordu się powiodło.<br>';
-//    echo 'ID nowego rekrdu to: '.$conn->insert_id.'<br>';
-//}
-//else {
-//    echo 'Nie udało się dodać rekordu.<br>';
-//}    
 ?>
