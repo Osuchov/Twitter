@@ -4,30 +4,25 @@
     
     require_once './db_conn.php';
     require_once './header.php';
-    
 //    $newUser = new User();
 //    $newUser->setUsername('newUser');
 //    $newUser->saveToDB($mysqli)
 ?>
-<h1 style="text-align: center">Welcome to My Twitter App</h1>
-<h2 style="text-align: center">To view tweets you must be logged in.</h2>
+<div id="header">Welcome to My Twitter App!<br>
+    To view tweets you must be logged in.</div>
 <br><br>
-<div class="container">
-    <div class="row">
-        <form action="index.php" method="POST" role="form">
-            <legend>Login panel</legend>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="text" style="width: 25%; height: 25px" class="form-control" name="email">
-                <label>Password:</label>
-                <br>
-                <input type="password" style="width: 25%; height: 25px" name="pass">
-                <br><br>
-                <button type="submit" name="login" class="btn btn-primary">Login</button>         
-                <button type="submit" name="register" class="btn btn-primary">Register</button>
-            </div>
-        </form>
-    </div>
+<div id="loginpanel">
+    <form action="index.php" method="POST" role="form">
+        <legend>Login panel</legend><br>
+        <div>
+            <label for="email">E-mail:</label><br>
+            <input type="text" name="email"><br>
+            <label>Password:</label><br>
+            <input type="password"name="pass"><br><br>
+            <button type="submit" name="login">Login</button>         
+            <button type="submit" name="register">Register</button>
+        </div>
+    </form>
 </div>
 </body>
 

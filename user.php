@@ -7,6 +7,21 @@ class User {
     private $email;
     private $status;
     
+    static public function loadUserById(mysqli $connection, $id) {
+        $sql = "SELECT * FROM Users WHERE id=$id";
+        $result = $connection->query($sql);
+        
+        if ($result==true && $result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            $loadedUser = new User();
+            $loadedUser->id = $row['id'];
+            $loadedUser->username = $row['username'];
+            $loadedUser->hashPass = $row['hashPass'];
+            $loadedUser->email = $row['email'];
+            $loadedUser->status = $row['status'];
+        }
+    }
+    
     public function __construct() {
         $this->id = -1;
         $this->username = '';
@@ -39,7 +54,9 @@ class User {
     }
     public function setStatus($status) {
         $this->status = $status;
-    }    
+    }
+    
+
 }
 
 ?>
