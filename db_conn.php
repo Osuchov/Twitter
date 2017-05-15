@@ -2,8 +2,7 @@
 $conn = @new mysqli (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 if ($conn->connect_error) {
-    echo '<div class="noconnection">Failed to connect with database.<br>'
-            . 'Error: '.$conn->connect_error.'</div><br>';
+    echo '<div class="connection" style="color: red">Failed to connect with database. Error: '.$conn->connect_error.'</div>';
 }
 else {
     echo '<div class="connection">Connected.</div>';
