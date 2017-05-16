@@ -21,10 +21,11 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         $user = User::loadUserByEmail($conn, $email);
         
         if (password_verify ($pass, $user->getHashPass())) {
-            echo 'Zalogowano.';
+            $_SESSION['username'] = $user->getUsername();
+            header('refresh: 1; index.php');
         }
         else {
-            'Incorrect password or e-mail.<br>';
+            echo 'Incorrect password or e-mail.<br>';
         }
     }
     else {

@@ -18,12 +18,18 @@ else {
     echo 'Find all the newest tweets right here!<br><br>';
 }
 
-
 if (isset($_GET['page']) && $_GET['page']==='login') {
     include'./login.php';
 }
 if (isset($_GET['page']) && $_GET['page']==='registration') {
     include './register.php';
+}
+if (isset($_GET['page']) && $_GET['page']==='logout') {
+    unset($_SESSION['username']);
+    header('refresh: 1; index.php');    
+}
+if (isset($_GET['page']) && $_GET['page']==='settings') {
+    include './settings.php';
 }
 
 echo '</div>';
