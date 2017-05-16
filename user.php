@@ -99,7 +99,7 @@ class User {
                     id=$this->id";
             $result = $connection->query($sql);
             if($result == true){
-                echo 'Well done! You\'ve successfully modiefied user '.$this->username.' in the database.<br>';
+                echo 'Well done! You\'ve successfully modified user '.$this->username.' in the database.<br>';
                 return true;
             }
         }
@@ -139,5 +139,4 @@ class User {
              'id: '.$this->id.'<br>';
     }
 }
-
 ?>

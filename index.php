@@ -7,6 +7,7 @@
     require_once './db_conn.php';
     require_once './header.php';
     require_once './user.php';
+    require_once './tweet.php';
 
 
 echo '<div id="header">Welcome to My Twitter App!<br><br>';
