@@ -1,4 +1,6 @@
 <?php
+require_once './user.php';
+require_once './db_conn.php';
 
 class Tweet {
     private $id;
@@ -40,7 +42,7 @@ class Tweet {
     }
     
     public function __construct() {
-        $this->$id= -1;
+        $this->id= -1;
         $this->userid = '';
         $this->creationDate = '';
         $this->text = '';
@@ -59,14 +61,18 @@ class Tweet {
         return $this->text;
     }
     
-    public function setUserId() {
-        
+    public function setUserId($id) {
+        if (is_numeric($id)) {
+            $this->userid = $id;
+        }
     }
     public function setCreationDate() {
-        
+        $this->creationDate = strtotime("now");
     }
-    public function setText() {
-        
+    public function setText($text) {
+        if (is_string($text)) {
+            $this->text = $text;
+        }
     }
     
     public function PrintInfo() {
@@ -76,4 +82,7 @@ class Tweet {
              'Text: '.$this->text.'<br>';        
     }
 }
+
+
+
 ?>

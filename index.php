@@ -36,10 +36,6 @@ if (isset($_GET['page']) && $_GET['page']==='settings') {
 echo '</div>';
 
 
-
-
-
-
     require_once './footer.php';
     //unset($_SESSION['username']);
 ?>

@@ -1,4 +1,6 @@
 <?php
+require_once './config.php';
+
 $conn = @new mysqli (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 if ($conn->connect_error) {
@@ -7,4 +9,3 @@ if ($conn->connect_error) {
 else {
     echo '<div class="connection">Connected.</div>';
 }
-?>
