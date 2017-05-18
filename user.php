@@ -105,6 +105,9 @@ class User {
         }
     }    
     
+    public function getUserid() {
+        return $this->id;
+    }  
     public function getUsername() {
         return $this->username;
     }

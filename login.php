@@ -22,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         
         if (password_verify ($pass, $user->getHashPass())) {
             $_SESSION['username'] = $user->getUsername();
+            $_SESSION['useremail'] = $user->getEmail();
+            $_SESSION['userid'] = $user->getUserid();
             header('refresh: 1; index.php');
         }
         else {

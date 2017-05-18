@@ -2,7 +2,7 @@ html, body {
     background-color: #1a0066;
     color: white;
     font-family: "Montserrat", serif;
-    font-size: 13;
+    font-size: 16;
     margin: 0;
     padding: 0;
 }
@@ -14,7 +14,7 @@ body {
 }
 
 #header {
-    font-size: 22;
+    font-size: 30;
     text-align: center;
     padding-top: 80;
     padding-bottom: 50;
@@ -27,6 +27,14 @@ body {
     width: 70%;
     padding-left: 100;
     padding-bottom: 30;
+}
+
+#tweet {
+    display:inline-block;
+    font-family: "Ubuntu", serif;
+    font-size: 16;
+    text-align: left;
+    resize: none;
 }
 
 hr {
@@ -48,13 +56,20 @@ input {
     width: 25%;
     height: 25px;
 }
+textarea.tweet {
+    width: 200%;
+    vertical-align: top;
+    text-align: left;
+    padding:0;
+    resize: none;
+}
 
 button {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 div.connection {
-    font-size: 7;
+    font-size: 9;
     position: absolute;
     top: 10;
     left: 10;

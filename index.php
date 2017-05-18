@@ -17,6 +17,8 @@ if (!isset($_SESSION['username'])){
 }
 else {
     echo 'Find all the newest tweets right here!<br><br>';
+    
+    include './tweetmatrix.php';
 }
 
 if (isset($_GET['page']) && $_GET['page']==='login') {
@@ -27,6 +29,8 @@ if (isset($_GET['page']) && $_GET['page']==='registration') {
 }
 if (isset($_GET['page']) && $_GET['page']==='logout') {
     unset($_SESSION['username']);
+    unset($_SESSION['useremail']);
+    unset($_SESSION['userid']);
     header('refresh: 1; index.php');    
 }
 if (isset($_GET['page']) && $_GET['page']==='settings') {
