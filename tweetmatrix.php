@@ -34,9 +34,16 @@ if (isset($_POST['tweettext']) && is_string($_POST['tweettext'])) {
 }
 
 $alltweets = Tweet::loadAllTweets($conn);
+$atRev = array_reverse($alltweets);
 
-foreach ($alltweets as $tweet) {
-    echo $tweet->PrintInfo();
+echo '<table>';
+foreach ($atRev as $tweet) {
+    echo '<tr>
+            <td><fieldset><legend><b>'.$tweet->getUsername().'</b> <i>'.$tweet->getCreationDate().'</i></legend>'.$tweet->getText().'</fieldset></td>
+          </tr><br>';
+    if (true) {
+        //tu napisz dalszą kolejną pętlę dla komentarzy do tweetów
+    }
 }
-
+echo '</table>';
 ?>
