@@ -5,6 +5,7 @@ html, body {
     font-size: 16;
     margin: 0;
     padding: 0;
+    display: block;
 }
 
 body {
@@ -14,6 +15,7 @@ body {
 }
 
 #header {
+    display: block;    
     font-size: 30;
     text-align: center;
     padding-top: 80;
@@ -21,15 +23,28 @@ body {
 }
 
 #loginpanel {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
     font-family: "Ubuntu", serif;
     font-size: 18;
     text-align: left;
-    width: 70%;
-    padding-left: 100;
+    padding-top: 50;
     padding-bottom: 30;
+}
+table#tweets {
+    margin: 0px auto; 
 }
 
 #tweet {
+    display:inline-block;
+    font-family: "Ubuntu", serif;
+    font-size: 16;
+    text-align: left;
+    resize: none;
+}
+
+#comment {
     display:inline-block;
     font-family: "Ubuntu", serif;
     font-size: 16;
@@ -61,6 +76,15 @@ textarea.tweet {
     vertical-align: top;
     text-align: left;
     padding:0;
+    resize: none;
+}
+textarea#comment {
+    width: 80%;
+    height: 27px;
+    vertical-align: top;
+    text-align: left;
+    padding:0;
+    padding: 0;
     resize: none;
 }
 

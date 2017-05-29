@@ -103,7 +103,7 @@ class User {
                 return true;
             }
         }
-    }    
+    }
     
     public function getUserid() {
         return $this->id;

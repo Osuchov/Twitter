@@ -3,11 +3,10 @@ require_once './user.php';
 require_once './db_conn.php';
 
 class Tweet {
-    private $id;
-    private $userid;
-    private $creationDate;
-    private $text;
-    private $username;
+    protected $id;
+    protected $userid;
+    protected $creationDate;
+    protected $text;
     
     static public function loadTweetById($connection, $id) {
         $sql = "SELECT * FROM Tweets WHERE id=$id";
@@ -27,24 +26,24 @@ class Tweet {
     
     static public function loadTweetsByUserId ($connection, $userId) {
         $sql = "SELECT * FROM Tweets WHERE userid=$userId";
+        $tweets = [];
         $result = $connection->query($sql);
         
         if ($result==TRUE && $result->num_rows !=0) {
-            $row = $result->fetch_assoc();
-            $loadedTweet = new Tweet();
-            $loadedTweet->id = $row['id'];
-            $loadedTweet->userid = $row['userid'];
-            $loadedTweet->creationDate = $row['creationDate'];
-            $loadedTweet->text = $row['text'];
-            return $loadedTweet;
+            foreach ($result as $row) {
+                $loadedTweet = new Tweet();
+                $loadedTweet->id = $row['id'];
+                $loadedTweet->userid = $row['userid'];
+                $loadedTweet->creationDate = $row['creationDate'];
+                $loadedTweet->text = $row['text'];
+                $tweets[] = $loadedTweet;                
+            }
         }
-        echo 'Incorrect User.<br>';
-        return null;
+        return $tweets;
     }
     
     static public function loadAllTweets (mysqli $connection) {
-        $sql = "SELECT t.*, u.username FROM Tweets t
-                JOIN Users u ON u.id = t.userid";
+        $sql = "SELECT * FROM Tweets";
         $tweets = [];
         $result = $connection->query($sql);
         if ($result == true && $result->num_rows !=0) {
@@ -54,7 +53,6 @@ class Tweet {
                 $loadedTweet->userid = $row['userid'];
                 $loadedTweet->creationDate = $row['creationDate'];
                 $loadedTweet->text = $row['text'];
-                $loadedTweet->username = $row['username'];
                 $tweets[] = $loadedTweet;
             }
         }
@@ -96,6 +94,24 @@ class Tweet {
         }        
     }
     
+    public function tweetUserEmail($connection) {
+        $tweetuserid = $this->userid;
+        $sql = 'SELECT email FROM Users where id ='.$tweetuserid;
+        $result = $connection->query($sql);
+        $row = $result->fetch_assoc();
+        $email = $row['email'];
+        return $email;
+    }
+    
+    public function tweetUserName($connection) {
+        $tweetuserid = $this->userid;
+        $sql = 'SELECT username FROM Users where id ='.$tweetuserid;
+        $result = $connection->query($sql);
+        $row = $result->fetch_assoc();
+        $name = $row['username'];
+        return $name;
+    }    
+    
     public function getId() {
         return $this->id;
     }
@@ -107,10 +123,7 @@ class Tweet {
     }
     public function getText() {
         return $this->text;
-    }
-    public function getUsername() {
-        return $this->username;
-    }    
+    }  
     
     public function setUserId($id) {
         if (is_numeric($id)) {
@@ -124,13 +137,7 @@ class Tweet {
         if (is_string($text)) {
             $this->text = $text;
         }
-    }
-    public function setUserName($username) {
-        if (is_string($username)) {
-            $this->username = $username;
-        }
     }    
-    
     
     public function PrintInfo() {
         echo $this->creationDate.' '.$this->username.' wrote: '.

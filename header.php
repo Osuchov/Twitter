@@ -22,7 +22,7 @@ else {
     echo $_SESSION['username'].'</b><br>';
         echo '<form action="" method="get">
             <button type="submit" name="page" value="logout">Logout</button>
-            <button style="float: right;" type="submit" name="page" value="settings">App Settings</button>
+            <button style="float: right;" type="submit" name="page" value="profile">Profile</button>
             </form>';
     
 }
