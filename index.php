@@ -9,6 +9,7 @@
     require_once './user.php';      //user class definitions
     require_once './tweet.php';     //tweet class definitions
     require_once './comment.php';   //comment class definitions
+    require_once './message.php';
 
 
 echo '<div id="header">Welcome to My Twitter App!<br><br>'; //welcoming
@@ -24,9 +25,17 @@ if (!isset($_SESSION['username'])){ //if logged condition
     echo 'To view tweets you must be logged in.<br><br>';
 }
 else {
-    echo 'Find all the newest tweets right here!<br><br>';
+
     
-    require_once './tweetmatrix.php';    //webpage with all tweets
+    if (isset($_GET['page']) && $_GET['page']==='profile') {
+        include './profile.php';                           //with profile button go to profile
+    }
+    elseif (isset($_GET['page']) && $_GET['page']==='messages') {
+        include './messagematrix.php';                           //with profile button go to profile
+    }
+    else {
+        require_once './tweetmatrix.php';    //webpage with all tweets
+    }
 }
 
 if (isset($_GET['page']) && $_GET['page']==='login') {
@@ -36,12 +45,7 @@ if (isset($_GET['page']) && $_GET['page']==='registration') {
     include './register.php';       //if registration panel used - go to registration page
 }
 
-if (isset($_GET['page']) && $_GET['page']==='profile') {
-    include './profile.php';                           //with profile button go to settings
-}
-
 echo '</div>';
-
 
     require_once './footer.php';                        //add footer
     //unset($_SESSION['username']);

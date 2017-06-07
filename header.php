@@ -10,20 +10,33 @@
 <body>
 
 <?php
-echo '<div class="logged">Logged as: <b>';
+echo '<div class="logged" style="width: 15%">Logged as: <b>';
 if (!isset($_SESSION['username'])) {
     echo 'not logged in</b>.<br>';
         echo '<form action="" method="get">
-            <button type="submit" name="page" value="login">Login</button>
-            <button style="float: right;" type="submit" name="page" value="registration">Register</button>
+            <button style="width: 50%; float: left" type="submit" name="page" value="login">Login</button>
+            <button style="width: 50%" style="float: right;" type="submit" name="page" value="registration">Register</button>
             </form>';
 }
 else {
     echo $_SESSION['username'].'</b><br>';
         echo '<form action="" method="get">
-            <button type="submit" name="page" value="logout">Logout</button>
-            <button style="float: right;" type="submit" name="page" value="profile">Profile</button>
-            </form>';
+            <button style="width: 50%" type="submit" name="page" value="logout">Logout</button>';
+            if (isset($_GET['page']) && $_GET['page']==='profile') {
+                echo '<button style="width: 50%" style="float: right;" type="submit" value="">Tweets</button>';
+            }
+            else{
+                echo '<button style="width: 50%" style="float: right;" type="submit" name="page" value="profile">Profile</button>';
+            }
+        echo '<br><hr>';
+        if (isset($_GET['page']) && $_GET['page']==='messages') {
+            echo '<button style="width: 100%" style="float: right;" type="submit" value="">Tweets</button>';            
+        }
+        else {
+            echo '<button style="width: 100%" type="submit" name="page" value="messages">Messages</button>';            
+        }
+
+        echo '</form>';
     
 }
 echo '</div>';

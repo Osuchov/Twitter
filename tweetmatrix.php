@@ -10,10 +10,11 @@ if (isset($_SESSION['useremail'])) {
 ?>
 
 <html>
+    Find all the newest tweets right here!<br><br>
     <form action="" method="post" role="form">
-        <div id="tweet" style="align-content: left">Start tweeting! (make sure your tweet is between 1 and 140 characters long)<br>
-            <textarea id="tweet" name="tweettext" rows="3" cols="50" maxlength="140" wrap="soft"></textarea><br>
-            <button type="submit" name="tweet">Post your tweet!</button>
+        <div id="tweet" style="align-content: left">Start tweeting! (tweets are between 1 and 140 characters long)<br>
+            <textarea id="tweet" name="tweettext" rows="3" cols="50" maxlength="140" wrap="soft"></textarea><br><br>
+            <button type="submit" name="tweet" style="width: 50%">Post your tweet!</button>
         </div>
     </form>
 </html>

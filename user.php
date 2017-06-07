@@ -51,7 +51,7 @@ class User {
                 $loadedUser = new User();
                 $loadedUser->id = $row['id'];
                 $loadedUser->username = $row['username'];
-                $loadedUser->hashedPassword = $row['hashPass'];
+                $loadedUser->hashPass = $row['hashPass'];
                 $loadedUser->email = $row['email'];
                 $users[] = $loadedUser;
             }
