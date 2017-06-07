@@ -8,10 +8,10 @@ class User {
     private $status;
     
     static public function loadUserById(mysqli $connection, $id) {
-        $sql = "SELECT * FROM Users WHERE id=$id";
+        $sql = "SELECT * FROM Users WHERE id='$id'";
         $result = $connection->query($sql);
         
-        if ($result==true && $result->num_rows == 1) {
+        if ($result==true && $result->num_rows != 0) {
             $row = $result->fetch_assoc();
             $loadedUser = new User();
             $loadedUser->id = $row['id'];
@@ -21,6 +21,7 @@ class User {
             $loadedUser->status = $row['status'];
             return $loadedUser;
         }
+        echo 'Incorrect user.<br>';
         return null;
     }
     
@@ -74,20 +75,20 @@ class User {
             $result = $connection->query($sql);
             if($result == true){
                 $this->id = $connection->insert_id;
-                echo 'Well done! You\'ve succesfully added user '.$this->username.' to the database.<br>';
+                echo 'Well done! You\'ve succesfully added user '.$this->username.'('.$this->email.') to the database.<br>';
                 echo 'Use your e-mail in login panel and login.<br>';
                 return true;
             }
-            else {
-                $query = "SELECT * FROM Users WHERE email='$this->email'";
-                $result2 = $connection->query($query);
-                if ($result2->num_rows != 0) {
-                    echo 'We\'re sorry, but e-mail '.$this->email.' is already in use.<br>';
-                    echo 'Try a different one.<br>';
-                    return false;                    
-                }
-
-            }
+//            else {
+//                $query = "SELECT * FROM Users WHERE email='$this->email'";
+//                $result2 = $connection->query($query);
+//                if ($result2->num_rows != 0) {
+//                    echo 'We\'re sorry, but e-mail '.$this->email.' is already in use.<br>';
+//                    echo 'Try a different one.<br>';
+//                    return false;                    
+//                }
+//
+//            }
         }
         else {
             $sql = "
@@ -99,11 +100,12 @@ class User {
                     id=$this->id";
             $result = $connection->query($sql);
             if($result == true){
-                echo 'Well done! You\'ve successfully modified user '.$this->username.' in the database.<br>';
+                echo 'Well done! You\'ve successfully modified user '.$this->username.' ('.$this->email.') in the database.<br>';
                 return true;
             }
         }
     }
+   
     
     public function getUserid() {
         return $this->id;

@@ -11,7 +11,7 @@
     require_once './comment.php';   //comment class definitions
     require_once './message.php';
 
-
+echo '<br><br>';
 echo '<div id="header">Welcome to My Twitter App!<br><br>'; //welcoming
 
 if (isset($_GET['page']) && $_GET['page']==='logout') { //if logout - end session

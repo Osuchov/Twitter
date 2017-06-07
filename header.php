@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
             </form>';
 }
 else {
-    echo $_SESSION['username'].'</b><br>';
+    echo $_SESSION['username'].'</b> ('.$_SESSION['useremail'].')<br>';
         echo '<form action="" method="get">
             <button style="width: 50%" type="submit" name="page" value="logout">Logout</button>';
             if (isset($_GET['page']) && $_GET['page']==='profile') {

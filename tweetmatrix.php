@@ -39,7 +39,7 @@ if (isset($_POST['tweettext']) && is_string($_POST['tweettext'])) {
 if (isset($_POST['tweetcomment']) && is_string($_POST['tweetcomment']) &&
         isset($_POST['tweetid']) && is_numeric($_POST['tweetid'])) {
     if (strlen($_POST['tweetcomment']) > 0) {
-        echo ' OK !!!';
+        //echo ' OK !!!';
         $commenttext = $_POST['tweetcomment'];
         $tweetid = intval($_POST['tweetid']);
 
